@@ -1,0 +1,102 @@
+{% extends 'layout.html' %}
+{% block body1 %}
+<title>My Blog-Home</title>
+<style>
+#more {display: none;}
+</style>
+{% endblock %}
+{% block body3 %}
+<a class="navbar-brand" >Welcome!!</a>
+
+{% endblock %}
+{% block body4 %}
+{% if 'user' in session and session['user'] == params['admin_user'] %}
+<li class="nav-item"><a class="nav-link" href="/logout">Log Out</a></li>
+<li class="nav-item"><a class="nav-link" href="/dashboard">Dashboard</a></li>
+
+
+{% endif %}
+{% endblock %}
+{% block body2 %}
+<!-- Page Header-->
+        <header class="masthead" style="background-image: url('{{ url_for('static',filename = 'assets/img/home-bg.jpg')}}')">
+
+
+            <div class="overlay"></div>
+            <div class="container">
+
+                <div class="row">
+                    <div class="col-lg-8 col-md-10 mx-auto">
+                        <div class="site-heading">
+                            <h1>{{params['blog_name']}}</h1>
+                            <span class="subheading">Scroll Down for Ideas</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- Main Content-->
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-md-10 mx-auto">
+                    {% for post in data[length_of_data-1:(length_of_data-1)-int_params:-1] %}
+                    <div class="post-preview">
+                        <a href="/post/{{post[3]}}">
+                            <h2 class="post-title">{{post[0]}}</h2>
+                            <h3 class="post-subtitle">{{post[1]}}</h3>
+                        </a>
+                        <p class="post-meta">
+                            Posted
+                            on {{post[2]}}
+                        </p>
+                        <p> {{post[4][:143]}}....</p>
+                    </div>
+                    <hr />
+                    
+                    {% endfor %}
+                    <span id="dots"></span>
+                    <span id="more">
+                        {% for post in data[(length_of_data-1)-int_params::-1] %}
+                    <div class="post-preview">
+                        <a href="/post/{{post[3]}}">
+                            <h2 class="post-title">{{post[0]}}</h2>
+                            <h3 class="post-subtitle">{{post[1]}}</h3>
+                        </a>
+                        <p class="post-meta">
+                            Posted
+                            on {{post[2]}}
+                        </p>
+                        <p> {{post[4][:143]}}....</p>
+                    </div>
+                    <hr />
+                        {% endfor %}
+
+                    </span>
+
+                    <!-- Pager-->
+                    <div class="clearfix">
+                        <button class="btn btn-primary float-right" onclick="myFunction()" id="myBtn">See Older Posts</button>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+<script>
+function myFunction() {
+  var dots = document.getElementById("dots");
+  var moreText = document.getElementById("more");
+  var btnText = document.getElementById("myBtn");
+
+  if (dots.style.display === "none") {
+    dots.style.display = "inline";
+    btnText.innerHTML = "See Older Posts";
+    moreText.style.display = "none";
+  } else {
+    dots.style.display = "none";
+    btnText.innerHTML = "Back To Newer Posts";
+    moreText.style.display = "inline";
+  }
+}
+</script>
+    {% endblock %}

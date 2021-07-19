@@ -1,0 +1,25 @@
+{
+  "params":
+  {
+    "local_server" : true,
+    "local_uri":"mysql+mysqlconnector://root:mandeep@localhost/myblogdatabase",
+    "production_uri": "mysql+mysqlconnector://root:mandeep@localhost/myblogdatabase",
+    "fb_url": "https://www.facebook.com/MandeepDhakaBlog",
+    "gthb_url": "https://www.github.com/MandeepDhakaBlog",
+    "tw_url": "https://www.twitter.com/MandeepDhakaBlog",
+    "blog_name": "My Blog",
+    "gmail_user": "anyemailid@gmail.com",
+    "gmail_password": "any@password",
+    "about": "will write here later",
+    "post_no": 4,
+    "admin_user": "mandeepdhaka",
+    "admin_password": "326326326",
+    "upload_location": "C:\\Users\\MANDEEP DHAKA\\PycharmProjects\\pythonProject\\Flaskprac\\static\\assets\\img"
+
+
+  }
+
+
+
+
+}

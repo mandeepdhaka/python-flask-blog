@@ -1,0 +1,42 @@
+{% extends 'layout.html' %}
+{% block body1 %}
+<title>My Blog-About</title>
+{% endblock %}
+{% block body3 %}
+<a class="navbar-brand" >Welcome!!</a>
+
+{% endblock %}
+{% block body4 %}
+{% if 'user' in session and session['user'] == params['admin_user'] %}
+<li class="nav-item"><a class="nav-link" href="/logout">Log Out</a></li>
+<li class="nav-item"><a class="nav-link" href="/dashboard">Dashboard</a></li>
+
+
+{% endif %}
+{% endblock %}
+{% block body2 %}
+<!-- Page Header-->
+        <header class="masthead" style="background-image: url('{{ url_for('static',filename = 'assets/img/about-bg.jpg')}}')">
+
+
+            <div class="overlay"></div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-md-10 mx-auto">
+                        <div class="page-heading">
+                            <h1>About Me</h1>
+                            <span class="subheading">This is what I do.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- Main Content-->
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-md-10 mx-auto">
+                    <h1>{{ params['about'] }}</h1>
+                </div>
+            </div>
+        </div>
+       {% endblock %}

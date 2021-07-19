@@ -1,0 +1,53 @@
+{% extends 'layout.html' %}
+{% block body1 %}
+<title>My Blog-Post</title>
+{% endblock %}
+{% block body3 %}
+<a class="navbar-brand" >Welcome!!</a>
+
+{% endblock %}
+{% block body4 %}
+{% if 'user' in session and session['user'] == params['admin_user'] %}
+<li class="nav-item"><a class="nav-link" href="/logout">Log Out</a></li>
+<li class="nav-item"><a class="nav-link" href="/dashboard">Dashboard</a></li>
+<li class="nav-item"><a class="nav-link" href="/edit/{{sno}}">Edit</a></li>
+<li class="nav-item"><a class="nav-link" href="/delete/{{post_slug}}">Delete</a></li>
+
+{% endif %}
+{% endblock %}
+{% block body2 %}
+<!-- Page Header-->
+        {% set img_name = 'assets/img/'+img %}
+        <header class="masthead" style="background-image: url('{{ url_for('static',filename = 'assets/img/'+img)}}')">
+
+            <div class="overlay"></div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-md-10 mx-auto">
+                        <div class="post-heading">
+                            <h1>{{title}}</h1>
+                            <h2 class="subheading">{{sub_title}}</h2>
+                            <span class="meta">
+                                Posted
+
+                                on {{date}}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- Post Content-->
+        <article>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-md-10 mx-auto">
+
+                        {{content}}
+
+
+                    </div>
+                </div>
+            </div>
+        </article>
+        {% endblock %}

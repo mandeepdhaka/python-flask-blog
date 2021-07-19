@@ -1,0 +1,83 @@
+{% extends 'layout.html' %}
+{% block body1 %}
+<title>Admin Panel Loggedin</title>
+{% endblock %}
+{% block body3 %}
+<a class="navbar-brand" >Welcome Mandeep!!</a>
+
+{% endblock %}
+{% block body4 %}
+<li class="nav-item"><a class="nav-link" href="/logout">Log Out</a></li>
+{% endblock %}
+
+
+{% block body2 %}
+<header class="masthead" style="background-image: url('{{ url_for('static',filename = 'assets/img/underwaterbear.jpg')}}')">
+
+
+            <div class="overlay"></div>
+            <div class="container">
+
+                <div class="row">
+                    <div class="col-lg-8 col-md-10 mx-auto">
+                        <div class="site-heading">
+                            <h1>Admin Panel</h1>
+                            <span class="subheading">Scroll Down for Posts by You</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </header>
+<div class="container">
+    <h2>Add a New Post</h2>
+    <a class="btn btn-primary float-left" href="/edit/0"  style="border-radius:8px 8px 8px 8px">Write Post</a>
+
+
+    <br>
+    <br>
+    <hr>
+    <h2>Upload a File</h2>
+    <form action="/uploader" method="post" enctype="multipart/form-data">
+        <input type="file" name="file1">
+        <button type="submit" class="btn btn-primary" style="border-radius:8px 8px 8px 8px">Submit</button>
+    </form>
+
+    <hr>
+  <h2>Welcome Table</h2>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Sno</th>
+        <th>Title</th>
+        <th>Date</th>
+        <th>view</th>
+        <th>Edit</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for i in table_data %}
+
+
+      <tr>
+        <td>{{loop.index}}</td>
+        <td>{{i[1]}}</td>
+        <td>{{i[2]}}</td>
+        <td><a class="btn btn-primary float-right" href="/post/{{i[3]}}" style="border-radius:8px 8px 8px 8px">view</a></td>
+        <td><a class="btn btn-primary float-right" href="/edit/{{i[0]}}" style="border-radius:8px 8px 8px 8px">Edit</a></td>
+        <td><a class="btn btn-primary float-right" href="/delete/{{i[0]}}" style="border-radius:8px 8px 8px 8px">Delete</a></td>
+      </tr>
+
+
+    {% endfor %}
+
+
+    </tbody>
+  </table>
+</div>
+
+
+{% endblock %}

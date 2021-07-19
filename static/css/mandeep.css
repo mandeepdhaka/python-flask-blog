@@ -1,0 +1,29 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+#mandeep{
+
+    display: flex;
+}
+
+#mandeep ul{
+    margin-left:200px ;
+}
+
+#mandeep li{
+    display: inline-block;
+    text-transform: capitalize;
+    font-size: 23px;
+    margin-top: 18px;
+    font-weight: 600;
+    padding-left: 17px;
+}
+
+#mandeep li img{
+    height: 90px;
+    width: 90px;
+    margin-top: -20px!important;
+}
